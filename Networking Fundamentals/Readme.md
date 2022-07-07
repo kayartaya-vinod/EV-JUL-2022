@@ -125,3 +125,21 @@ Based on the direction, transmission mode is divide into 3 categories:
 1. Full duplex mode
 
 ![](./concepts8.dio.png)
+
+## The OSI reference model
+
+-   Open Systems Interconnection model
+
+![](./concepts9.dio.png)
+
+#### Functionalities of Data link layer:
+
+1. Framing
+
+```
+     ---------------------------
+    | Header | Packet | Trailer |
+     ---------------------------
+```
+
+What DLL gets from the physical layer is only a PACKET, but it adds Header and Traler to make it a data-frame, which then is given to the network layer.
