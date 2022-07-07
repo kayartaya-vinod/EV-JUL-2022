@@ -14,7 +14,7 @@
     2. Coaxial Cable
     3. Fibre Optic Cable
 
-![](./images/concepts2.dio.png)
+![](./images/concepts-2.dio.png)
 
 ### Network Topologies
 
