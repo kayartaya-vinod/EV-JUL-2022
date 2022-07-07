@@ -144,6 +144,10 @@ Based on the direction, transmission mode is divide into 3 categories:
 
 What DLL gets from the physical layer is only a PACKET, but it adds Header and Traler to make it a data-frame, which then is given to the network layer.
 
+# References
+
+-   https://www.inetdaemon.com/tutorials/networking/
+
 # Assignment for Day-1
 
 -   Write your understanding of the following:
