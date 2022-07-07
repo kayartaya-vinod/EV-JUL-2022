@@ -1,6 +1,6 @@
 # Computer networking fundamentals
 
-![](./concepts1.dio.png)
+![](./images/concepts1.dio.png)
 
 ### Components of computer network
 
@@ -14,7 +14,7 @@
     2. Coaxial Cable
     3. Fibre Optic Cable
 
-![](./concepts2.dio.png)
+![](./images/concepts2.dio.png)
 
 ### Network Topologies
 
@@ -25,7 +25,7 @@
 1. Mesh
 1. Hybrid
 
-![](./concepts3.dio.png)
+![](./images/concepts3.dio.png)
 
 #### Advantages of Bus topology
 
@@ -43,7 +43,7 @@
 1. reconfiguration of network is very difficult
 1. attenuation - loss of signal due to length of cable. use repeaters
 
-![](./concepts4.dio.png)
+![](./images/concepts4.dio.png)
 
 #### Advantages of ring topology
 
@@ -61,7 +61,7 @@
 
 ### Star topology
 
-![](./concepts5.dio.png)
+![](./images/concepts5.dio.png)
 
 #### Advantages of star topology
 
@@ -80,7 +80,7 @@
 
 1. combination of bus and start topology
 
-![](./concepts6.dio.png)
+![](./images/concepts6.dio.png)
 
 #### Advantages of tree topology
 
@@ -105,7 +105,7 @@
     1. full -> a node is connected to all other nodes
     1. partial -> a node may not be connected to all the other nodes
 
-![](./concepts7.dio.png)
+![](./images/concepts7.dio.png)
 
 #### Advantages
 
@@ -124,13 +124,13 @@ Based on the direction, transmission mode is divide into 3 categories:
 1. Half duplex mode
 1. Full duplex mode
 
-![](./concepts8.dio.png)
+![](./images/concepts8.dio.png)
 
 ## The OSI reference model
 
 -   Open Systems Interconnection model
 
-![](./concepts9.dio.png)
+![](./images/concepts9.dio.png)
 
 #### Functionalities of Data link layer:
 
