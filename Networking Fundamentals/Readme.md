@@ -151,4 +151,5 @@ What DLL gets from the physical layer is only a PACKET, but it adds Header and T
     1. Different components involved in a computer networking
     1. Different topologies
     1. Different layers of OSI model
-`
+
+Please write your answers in a plain paper, take pictures of the same using your smartphone, convert them into a PDF document (using Adobe Scan mobile app) and upload the same into the shared drive. There is a folder for submission of assignments (Networking -> Assignments -> Submissions). Name your file in the format EMPNO_FIRSTNAME_LASTNAME.pdf (eg. 9876_VINOD_KUMAR.pdf).
