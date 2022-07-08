@@ -172,3 +172,122 @@ Please write your answers in a plain paper, take pictures of the same using your
 ## IPv4 Packet structure
 
 ![](./images/concepts11.dio.png)
+
+## IPv4 Addressing
+
+-   Supports 3 types of addressing modes
+    1. Unicast Addressing Mode
+    1. Broadcast Addressing Mode
+    1. Multicast Addressing Mode
+
+![](./images/concepts12.dio.png)
+
+## IPv4 Address Classes
+
+5 Classes of IPv4 address (Class A, Class B, etc)
+
+### Class A
+
+-   1st bit in 1st octed is always 0
+-   which means you have only 7 bits for representing a number - 0 to 127
+-   include 1.x.x.x to 126.x.x.x
+-   default subnet mask for this class is 255.0.0.0
+-   means that there can be a maximum of 126 networks
+-   address format for this class would look like 0nnnnnnn.nnnnnnnn.nnnnnnnn.nnnnnnnn
+
+### Class B
+
+-   1st two bits of the 1st octet are going to be 10
+-   address format for this class would look like 10nnnnnn.nnnnnnnn.nnnnnnnn.nnnnnnnn
+-   address format for this class would look like 10nnnnnn.nnnnnnnn.nnnnnnnn.nnnnnnnn
+-   10000000 - 10111111
+-   128 - 191
+-   Can represent up to 16384 networks and 65534 hosts
+
+### Class C
+
+-   1st 3 bits of the 1st octet are going to be 110
+-   11000000 - 11011111
+-   192 - 223
+-   address format for this class would look like 110nnnnn.nnnnnnnn.nnnnnnnn.nnnnnnnn
+-   upto 2^21 (2097152) networks and 254 hosts in each network
+
+# Application Protocols
+
+## 1. DNS
+
+-   Domain Name System
+-   Is a directory service that provides a mapping between the name of a host and the network IP
+-   TLD (Top Level Domains)
+    -   com (commercial)
+    -   edu (educational)
+    -   org (organizations)
+    -   in (india)
+    -   co (company)
+    -   gov (government)
+    -   info (informational)
+    -   biz (business)
+
+![](./images/concepts13.dio.png)
+
+### 2. FTP (File Transfer Protocol)
+
+-   application protocol based on TCP/IP protocol
+-   bulk upload/download files to/from servers
+
+![](./images/concepts14.dio.png)
+
+### 3. Telnet
+
+-   Terminal Network
+-   provides a connection to the remote computer
+-   local terminal appears to be the window into the remote computer
+
+### 4. SMTP
+
+-   Simple Mail Transfer Protocol
+-   Application level protocol based on TCP/IP that provides communication guidelines that allow a server software (mail server) to send emails over the internet and the client software (email clients like mail, outlook, thunderbird) to receive the emails
+
+### 5. SNMP
+
+-   Simple Network Management Protocol
+-   Tools available that make use of this protocol to manage devices on the network
+-   Monitor and manage the network
+
+### 6. HTTP
+
+-   HyperText Transfer Protocol
+-   the default protocol used by www
+-   can be used to transfer data (text/image/video etc) in plain text format or in binary format
+-   based on request-response model
+-   clients sent a request in HTTP standard guidelines, and the server receives, understands, and responds with content in HTTP standard format
+-   A request is always initiated by the client (eg, browser, postman, http client apps written in Java/Python etc)
+-   By default HTTP protocol is considered as stateless; meaning the server doesn't have any memory of previous requests by the same client
+-   A request and response are considered as "messages"
+-   Created by Roy Fielding
+
+#### Structure of a "request message"
+
+![](./images/request-message.dio.png)
+
+- The "Request line" consists of 3 parts
+    - HTTP request method (GET, POST, PUT, DELETE, PATCH, OPTIONS, TRACE, ...)
+    - Path to the resource you want to access
+    - optional HTTP version
+    - ex: GET /about HTTP1.1
+- The headers are key and value pairs delimited by a colon
+    - Most of these headers are standardised by HTTP protocol itself, but you may send custom headers as well
+    - For example, 
+        - Host: vinod.co
+        - Authorization: Bearer asjkdhaskjdhkasdh
+        - Connection: Keep-Alive
+        - Accept: text/html
+- Payload or request body
+    - can be any text content in any format
+    - will be processed by an application at the server side
+    - can be sent only with POST and PUT requests
+
+
+#### Structure of a "response message"
+
+![](./images/response-message.dio.png)

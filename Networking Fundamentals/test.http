@@ -1,1 +1,10 @@
-http://download.eclipse.org/technology/epp/downloads/release/2022-06/R/eclipse-jee-2022-06-R-macosx-cocoa-x86_64.dmg.sha1
+GET /wiki/BASIC_Programming HTTP/1.1
+Host: en.wikipedia.org
+
+###
+
+GET / 
+Host: vinod.co
+Accept: text/html
+
+###
