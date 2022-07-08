@@ -294,3 +294,14 @@ Please write your answers in a plain paper, take pictures of the same using your
 ### Find about HTTP RESPONSE STATUS CODES HERE:
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+
+# Assignment for Day-2
+
+-   Write your understanding of the following:
+
+    1. IP Packet structure
+    1. IP v4 Address Classes
+    1. Different types of computer networks
+    1. Protocols - SMTP, SNMP, FTP, and HTTP
+
+-   Submission procedure is same as yesterday, but in "Day2" folder.
