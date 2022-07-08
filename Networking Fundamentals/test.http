@@ -8,3 +8,76 @@ Host: vinod.co
 Accept: text/html
 
 ###
+
+GET /api/contacts HTTP/1.1
+Host: vin-contact-service.herokuapp.com
+
+###
+
+GET /api/contacts/8ddb7fcf-0a7a-4eeb-a78f-13238ed85a77 HTTP/1.1
+Host: vin-contact-service.herokuapp.com
+Accept: text/plain
+###
+
+GET /api/contacts/8ddb7fcf-0a7a-4eeb-a78f-13238ed85a77 HTTP/1.1
+Host: vin-contact-service.herokuapp.com
+Accept: application/json
+###
+
+GET /api/contacts/8ddb7fcf-0a7a-4eeb-a78f-13238ed85a77 HTTP/1.1
+Host: vin-contact-service.herokuapp.com
+Accept: application/xml
+###
+
+GET /api/contacts/8ddb7fcf-0a7a-4eeb-a78f-13238ed85a77 HTTP/1.1
+Host: vin-contact-service.herokuapp.com
+Accept: application/pdf
+### above request returns 406 content type asked is not served
+
+GET /api/contacts/8ddb7fcf HTTP/1.1
+Host: vin-contact-service.herokuapp.com
+Accept: application/xml
+### above request returns 404 page not found
+
+GET /orders
+Host: vinbasket.herokuapp.com
+### above returns 401 Unauthorized
+
+POST /login
+Host: vinbasket.herokuapp.com
+Content-Type: application/json
+
+{"email":"vinod@vinod.co","password":"topsecret"}
+###
+
+GET /orders
+Host: vinbasket.herokuapp.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlZpbm9kIEt1bWFyIiwiaWF0IjoxNjU3MjcxMDI3fQ.c5Av9TTLcV9QygjekgxZ_J9ulraOs4RaY_mAQvSHVtE
+### above returns 401 Unauthorized
+
+POST /api/contacts HTTP/1.1
+Host: vin-contact-service.herokuapp.com
+Content-Type: application/xml
+Accept: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<contact>
+  <firstname>Vinod</firstname>
+  <lastname>Kumar</lastname>
+  <gender>Male</gender>
+  <email>vinod@vinod.co</email>
+  <phone>9731424784</phone>
+</contact>
+
+###
+GET /api/contacts?email=vinod@vinod.co HTTP/1.1
+Host: vin-contact-service.herokuapp.com
+Accept: application/json
+
+###
+
+PATCH /api/contacts/e8bf3b5e-6a3f-47f4-8342-3e1c61a5da74 HTTP/1.1
+Host: vin-contact-service.herokuapp.com
+Content-Type: application/json
+
+{"city":"Bangalore"}

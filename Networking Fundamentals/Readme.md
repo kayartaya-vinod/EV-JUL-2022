@@ -260,7 +260,7 @@ Please write your answers in a plain paper, take pictures of the same using your
 -   the default protocol used by www
 -   can be used to transfer data (text/image/video etc) in plain text format or in binary format
 -   based on request-response model
--   clients sent a request in HTTP standard guidelines, and the server receives, understands, and responds with content in HTTP standard format
+-   clients send a request in HTTP standard guidelines, and the server receives, understands, and responds with content in HTTP standard format
 -   A request is always initiated by the client (eg, browser, postman, http client apps written in Java/Python etc)
 -   By default HTTP protocol is considered as stateless; meaning the server doesn't have any memory of previous requests by the same client
 -   A request and response are considered as "messages"
@@ -270,24 +270,27 @@ Please write your answers in a plain paper, take pictures of the same using your
 
 ![](./images/request-message.dio.png)
 
-- The "Request line" consists of 3 parts
-    - HTTP request method (GET, POST, PUT, DELETE, PATCH, OPTIONS, TRACE, ...)
-    - Path to the resource you want to access
-    - optional HTTP version
-    - ex: GET /about HTTP1.1
-- The headers are key and value pairs delimited by a colon
-    - Most of these headers are standardised by HTTP protocol itself, but you may send custom headers as well
-    - For example, 
-        - Host: vinod.co
-        - Authorization: Bearer asjkdhaskjdhkasdh
-        - Connection: Keep-Alive
-        - Accept: text/html
-- Payload or request body
-    - can be any text content in any format
-    - will be processed by an application at the server side
-    - can be sent only with POST and PUT requests
-
+-   The "Request line" consists of 3 parts
+    -   HTTP request method (GET, POST, PUT, DELETE, PATCH, OPTIONS, TRACE, ...)
+    -   Path to the resource you want to access
+    -   optional HTTP version
+    -   ex: GET /about HTTP1.1
+-   The headers are key and value pairs delimited by a colon
+    -   Most of these headers are standardised by HTTP protocol itself, but you may send custom headers as well
+    -   For example,
+        -   Host: vinod.co
+        -   Authorization: Bearer asjkdhaskjdhkasdh
+        -   Connection: Keep-Alive
+        -   Accept: text/html
+-   Payload or request body
+    -   can be any text content in any format
+    -   will be processed by an application at the server side
+    -   can be sent only with POST and PUT requests
 
 #### Structure of a "response message"
 
 ![](./images/response-message.dio.png)
+
+### Find about HTTP RESPONSE STATUS CODES HERE:
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
