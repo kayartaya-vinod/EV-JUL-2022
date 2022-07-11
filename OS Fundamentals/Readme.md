@@ -159,3 +159,13 @@ Some useful pointers about OS
 -   The code itself (during execution) is stored in CODE SEGMENT
 
 ![](./images/divisions-of-memory.dio.png)
+
+# Assignment for Day 1
+
+Do a bit of research about CPU scheduling and address the following tasks:
+
+1. Write about CPU Scheduling in Operating Systems
+2. What are the different types of CPU Scheduling Algorithms?
+3. Explain in detail about Round Robin Scheduling Algorithm
+
+As in the past, please write your content on a paper, and submit the PDF version of the same in the submission folder.
