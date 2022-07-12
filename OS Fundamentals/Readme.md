@@ -169,3 +169,155 @@ Do a bit of research about CPU scheduling and address the following tasks:
 3. Explain in detail about Round Robin Scheduling Algorithm
 
 As in the past, please write your content on a paper, and submit the PDF version of the same in the submission folder.
+
+# Linux Commands
+
+-   Case sensitive
+-   Most commands are in lowercase
+-   Use the `man` command for getting help on any command
+
+1. clear
+    - clears the terminal
+    - ctrl+k (windows/linux) cmd+k (macos)
+1. echo
+    - prints the text given or the content of the environment variable (if prefixed with $)
+1. export
+    - creates a new environment variable
+    - export MY_NAME="Vinod Kumar"
+    - export MY_CITY=Bangalore
+    - echo $MY_NAME welcomes you to $MY_CITY
+    - do not give space in the assignment expression (around the = symbol)
+1. env
+    - to list all the environment variables
+    - can also be used to remove all the environment variables by using the -i flag
+        - env -i bash
+        - clears all user exported environment variables and starts a snew bash session with default values
+        - not a recommended one
+1. unset
+    - removes the specified environment variable
+1. pwd
+    - prints working directory
+    - by default when the user logs in, they will be in thir `home` directory
+    - home directory can be set/identified using the environment variable `HOME`
+    - to view the content of any environment variable, use the `echo` command
+        - echo $HOME
+        - note the $ symbol prefix for the environment variable
+1. touch
+    - updates the timestamp of the file specified
+    - if the file does not exist, a new one will be created with no content
+    - creates a zero byte file
+1. ls
+    - short form for `list`
+    - lists files and directories in the working directory (if not specified)
+    - `ls -l` wide list of files and directories
+        - the first letter in the output for each file indicates the type of the file
+            - `-` means it is a regular file
+            - `d` means it is a directory
+            - `l` means it is a link (similar to (but not exactly) shortcut in Windows)
+        - the letters from 2 to 10 indicate the permissions given to user/group-member/others on the file/directory
+            - rwxrwxrwx format
+            - r->read, w->write, x->execute
+            - r->4, w->2, x->1
+        - column 2 indicates the number of links
+        - colums 3 and 4 indicate the name of the user who crated the file and the name of the group to which the user belongs to
+        - column 5 indicates the size of the file in bytes
+        - column 6 indicates the timestamp
+            - `Mar 15 10:01`
+        - column 7 is the name of the file/directory
+    - `ls -a` lists all files including hidden files (a file whose name starts with a dot is a hidden file)
+    - `ls -A` lists all files including hidden files excluding . and ..
+        - combine with -l option to get the long list of files/directories
+        - `ls -la` or `ls -lA`
+1. mkdir
+    - make directory
+    - directory (or a.k.a folder in Windows) is a container of files and directories
+    - can create multiple directories simultaneously
+        - mkdir java_project cpp_project python_project
+    - can create an entire tree of directories and subdirectories using the `-p` flag
+        - mkdir -p unix_training/day1/commands unix_training/day1/scripts
+1. tree
+
+    - to view the hierarchy of directories and files in a visual mode
+
+1. mv
+
+    - can be used for moving a file from one location to another location
+    - can also be used for renaming a file or directory
+
+1. cp
+
+    - copy one or more files to same or a different location
+    - Examples:
+        - `cp Hello.js Hi.js` Makes a copy of Hello.js as Hi.js in the same location
+        - `cp Hello.js react_project/Welcome.js` Makes a copy of Hello.js in the current directory to react_project directory with a new name
+        - `cp *.js ./js_files` Copy all JS files to a folder called `js_files`
+        - `cp -r java_project cpp_project my_projects` copies `java_project` and `cpp_project` folders and their content into the target folder `my_projects`. This is possible because of the `-r` flag.
+
+1. rmdir
+
+    - removes an empty directory
+    - to remove directories which are not empty use the `rm -r` command
+
+1. rm
+
+    - remove one or more files
+    - `rm Hello.js Hi.js`
+    - `rm -r my_projects` deletes the entire tree of file and directories inside `my_projects` including the same.
+    - dangerouse and should be avoided
+
+1. locate
+
+    - locates a files in a linux filesystem
+    - `locate *.java`
+    - Since it searches the entire filesystem, sometimes this would a time taking task
+
+1. cat
+
+    - short for catenate
+    - displays the content of the file specified
+        - `cat hello.txt`
+        - `cat /etc/passwd`
+    - can also be used for creating a new file
+        - `cat > readme.md`
+        - after typing the content (or pasting from clipboard), prese `CTRL+D` to save and exit
+
+1. more
+
+    - similar to cat, but displays the content pagewise
+    - press ENTER/RETURN key to foward one line at a time
+    - press SPACEBAR to view the next page content
+    - press `q` to quit
+    - `more /etc/passwd`
+    - can also take input from the output of another command
+        - `ls -l /usr/bin | more`
+        - output from the `ls -l /usr/bin` is fed as input to the `more` command
+
+1. head and tail
+
+    - `head` displays the top 10 lines from a file (or an input coming through the pipe)
+        - `head /etc/passwd`
+        - `ls -l /usr/bin | head`
+    - `tail` displays the bottom 10 lines from a file (or an input coming through the pipe)
+    - use -n flag (where n is an actual number) to control the number of lines
+        - e.g, `head -15 /etc/passwd` will show first 15 lines from the specified file
+
+1. cal
+
+    - displays the calendar for the current month of the current year
+    - `cal 2022` displays the calendar for the entire year 2022
+    - `cal 8 2002` displays the calendar for August 2002
+
+1. ping
+
+    - checks the connection from your computer to a different computer on the network (or internet)
+    - `ping -c 5 vinod.co` tries to ping 5 times to the server `vinod.co`
+
+1. hostname
+    - displays the name of the computer
+    - the flag `-I` displays the IP address instead of the name
+
+1. uname
+    - displays the information about the Linux
+    - the flag `-a` gives more information
+    - To get more detailed information about the OS use the command `cat /etc/os-release`
+
