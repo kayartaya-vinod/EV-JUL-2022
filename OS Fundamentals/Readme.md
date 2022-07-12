@@ -324,6 +324,8 @@ As in the past, please write your content on a paper, and submit the PDF version
 
 # Vi IMproved (VIM editor)
 
+## https://vim.rtorr.com (vim cheatsheet)
+
 -   Different modes
 
     -   Normal mode (press escape couple of times to ensure you are in the normal mode)
