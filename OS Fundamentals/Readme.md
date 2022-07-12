@@ -329,7 +329,15 @@ As in the past, please write your content on a paper, and submit the PDF version
     -   Normal mode (press escape couple of times to ensure you are in the normal mode)
     -   INSERT mode (allows the user to type text)
 
+-   Some useful commands:
+
+    -   `:q` -> quits the editor
+    -   `:q!` -> quit without saving
+    -   `:wq` -> write and quit
+    -   `:w` -> write and continue to edit
+
 -   Settings:
+    -   in the normal mode type colon (:) to issue these commands
     -   Can be saved in a file under the home directory called .vimrc
     -   set number
         -   sets the line number
