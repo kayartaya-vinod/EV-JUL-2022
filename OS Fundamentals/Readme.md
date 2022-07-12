@@ -313,6 +313,7 @@ As in the past, please write your content on a paper, and submit the PDF version
     - `ping -c 5 vinod.co` tries to ping 5 times to the server `vinod.co`
 
 1. hostname
+
     - displays the name of the computer
     - the flag `-I` displays the IP address instead of the name
 
@@ -321,3 +322,54 @@ As in the past, please write your content on a paper, and submit the PDF version
     - the flag `-a` gives more information
     - To get more detailed information about the OS use the command `cat /etc/os-release`
 
+# Vi IMproved (VIM editor)
+
+-   Different modes
+
+    -   Normal mode (press escape couple of times to ensure you are in the normal mode)
+    -   INSERT mode (allows the user to type text)
+
+-   Settings:
+    -   Can be saved in a file under the home directory called .vimrc
+    -   set number
+        -   sets the line number
+    -   set mouse=a
+        -   allows the use mouse to place cursor where ever needed
+    -   set autoindent
+        -   New lines inherit the indentation from the previous line
+    -   set tabstop=4
+        -   Tab is same as 4 spaces
+    -   colorscheme blue
+
+### In the NORMAL mode we can do editing operations
+
+-   add a new line after the current line
+    -   o
+-   add a new line before the current line
+    -   O
+-   insert characters at the current cursor position
+    -   i
+-   insert characters at the start of the current line
+    -   I
+-   copy an entire line
+    -   yy (yank or copy a line)
+    -   2yy (copy 2 lines, instead of 2 use any other number for those many lines)
+-   copy a word (letters from the current cursor position)
+    -   yw
+-   cut a line
+    -   dd
+    -   2dd (delete 2 lines from the current line, instead of 2 use a different number to delete those many lines)
+-   cut a word
+    -   dw
+-   paste from clipboard
+    -   p (lowercase pastes in the line below the current line)
+    -   P (uppercase pastes in the line above the current line)
+-   undo
+    -   u
+-   redo
+    -   R
+-   visual mode
+    -   v
+        -   start visual mode, mark text for doing cut/copy operations
+    -   V
+        -   start linewise visual mode
