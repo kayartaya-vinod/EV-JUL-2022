@@ -377,9 +377,20 @@ As in the past, please write your content on a paper, and submit the PDF version
 -   undo
     -   u
 -   redo
-    -   R
+    -   CTRL + r
 -   visual mode
     -   v
         -   start visual mode, mark text for doing cut/copy operations
     -   V
         -   start linewise visual mode
+
+![](./images/shell_variables.dio.png)
+
+# Assignment tasks for the Day 3
+
+1. Accept a positive number from the user and check if the number given is a prime or not
+1. Accept two positive numbers (say, n1 and n2) such that n1 < n2 and print all the prime numbers between n1 and n2
+1. Accept two positive numbers (say, n1 and n2) and print the value of n1 raised to the power of n2 (use loops, do not use builtin functions or libraries)
+1. Accept a positive number and print that many number of fibonacci elements. (a fibonacci number is the sum of previous two fibonacci numbers). 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
+
+Note: Ensure the inputs are validated as per requirements.
