@@ -386,7 +386,7 @@ As in the past, please write your content on a paper, and submit the PDF version
 
 ![](./images/shell_variables.dio.png)
 
-# Assignment tasks for the Day 3
+# Assignment tasks for day 3
 
 1. Accept a positive number from the user and check if the number given is a prime or not
 1. Accept two positive numbers (say, n1 and n2) such that n1 < n2 and print all the prime numbers between n1 and n2
@@ -394,3 +394,21 @@ As in the past, please write your content on a paper, and submit the PDF version
 1. Accept a positive number and print that many number of fibonacci elements. (a fibonacci number is the sum of previous two fibonacci numbers). 0, 1, 1, 2, 3, 5, 8, 13, 21, ...
 
 Note: Ensure the inputs are validated as per requirements.
+
+# Assignment tasks for day 4
+
+Write a script that when run, displays the following menu options:
+
+1. List all employees
+1. Search employee by id
+1. Add a new employee record
+1. Edit employee details
+1. Delete employee details
+1. Exit
+
+Following points must be kept in mind while coding:
+
+-   The application must exit only when the user enters the choice for Exit.
+-   List of employees should be displayed in a tabular format
+-   While searching for employee by id, if no matching data found, then an error message should be displayed
+-   While editing an employee record, for each field, display the current value, and accept a new value. If the user doesn't want to change the current value, user may simply press ENTER without typing any value, and the old value should be retained. After accepting the new data, the user should be displayed the same for confirmation. Once the user confirms, only then the data should be updated to the file.
