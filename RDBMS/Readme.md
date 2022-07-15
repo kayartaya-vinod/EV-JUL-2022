@@ -23,4 +23,4 @@
 
 ### Assignment on SQL Selectio statements
 
--   Refer to the <a href="Assignment_on_SQL_Queries.pdf">Assignment_on_SQL_Queries.pdf</a> and complete the questions from 1 to 40.
+-   Refer to the <a href="./Assignment_on_SQL_Queries.pdf">Assignment_on_SQL_Queries.pdf</a> and complete the questions from 1 to 40.
