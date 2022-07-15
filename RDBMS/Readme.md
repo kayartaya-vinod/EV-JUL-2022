@@ -6,3 +6,5 @@
 -   Port: 1521
 -   SID: orcl
 -   Username and Password as listed in the PDF
+
+![](./images/SQL_developer.png)
