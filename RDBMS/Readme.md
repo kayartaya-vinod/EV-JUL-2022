@@ -2,7 +2,7 @@
 
 ### Assignment
 
-1. Read through the slides 53 to 74 and try and understand the concept of Normalization, which is helpful in fine tuning the tables crated from ER diagrams
+1. Read through the slides 53 to 74 (from DBF.pdf), try and understand the concept of Normalization, which is helpful in fine tuning the tables crated from ER diagrams
 1. Convert the ER diagrams in the DBF_ER_Assignment_Solution.pdf into tables (relation)
 1. Convert the following ER diagram into tables (relations)
 
