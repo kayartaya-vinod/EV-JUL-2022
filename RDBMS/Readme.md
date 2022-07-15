@@ -16,3 +16,11 @@
 -   Username and Password as listed in the PDF
 
 ![](./images/SQL_developer.png)
+
+### Slides to read for SQL Select operations
+
+128 - 163
+
+### Assignment on SQL Selectio statements
+
+-   Refer to the <a href="Assignment_on_SQL_Queries.pdf">Assignment_on_SQL_Queries.pdf</a> and complete the questions from 1 to 40.
