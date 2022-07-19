@@ -1,0 +1,449 @@
+select * from regions;
+select * from countries;
+select * from locations;
+select * from departments;
+select * from employees;
+select * from jobs;
+select * from job_history;
+
+select distinct department_id from employees order by department_id;
+select distinct last_name from employees;
+select first_name, last_name, hire_date from employees;
+select first_name, last_name, salary, commission_pct, 
+    salary + (salary * commission_pct ) as bonus
+    from employees
+    order by bonus desc;
+    
+select first_name || ' ' || last_name as emp_name from employees;
+select concat('Dr.', concat(concat(first_name, ' '), last_name)) as emp_name from employees;
+select * from employees where hire_date='17-06-03';
+select * from employees where hire_date='17-JUN-03';
+-- the one below does not work in Oracle, but fine with MySQL.
+select * from employees where hire_date='2003-06-17';
+
+select * from employees where salary >= 12000;
+select * from employees where hire_date < '01-01-04';
+select * from employees where salary between 5000 and 7000;
+select * from employees where job_id in ('SA_REP', 'PU_MAN', 'ST_MAN', 'POLICE');
+select * from employees where commission_pct is not null;
+select * from employees where job_id in ('SA_MAN', 'SA_REP') and commission_pct is null;
+
+select * from employees where first_name like 'S%n';
+select * from employees where first_name like '__a%';
+select * from employees where first_name like '%r';
+select * from employees where hire_date like '%-05-%'; -- joined in May
+select * from employees where hire_date like '%-03'; -- joined in 2003
+
+select * from employees 
+    where department_id=80
+    and manager_id=145
+    and salary >=8000;
+
+select * from employees 
+    where department_id=80
+    and manager_id=145
+    or salary >=8000;
+
+select * from employees 
+    where department_id=80
+    and (manager_id=145 or salary >=8000);
+
+select * from employees where department_id != 80;
+select * from employees where department_id <> 80;
+select * from employees where not department_id = 80;
+
+desc dual;
+select * from dual;
+-- example of single row function (single row output for a single row of input)
+select sin(1), cos(1), tan(1) from dual;
+
+-- an example of multi-row (aggregate) function (single row of output for multiple rows of input)
+select avg(salary) from employees;
+
+-- char functions
+select upper(first_name), initcap(first_name), initcap(lower(job_id)), length(first_name) from employees;
+
+select lpad('vinod', 15, '-'),
+    rpad('vinod', 15, '-') from dual;
+
+select '***' || rtrim('      vinod      ') || '***' from dual;
+select '***' || ltrim('      vinod      ') || '***' from dual;
+select '***' || trim('      vinod     kumar   ') || '***' from dual;
+select first_name, 
+    substr(first_name, 1, 3) first_three,
+    substr(first_name, length(first_name)-2, 3) last_three,
+    substr(first_name, 2, length(first_name)-2) excluding_first_and_last_letter
+    from employees;
+
+select sysdate from dual;
+select sysdate, add_months(sysdate, 120) from dual;
+select to_char(sysdate, 'DAY D, MONTH YYYY') from dual;
+select next_day(sysdate, 'SUNDAY') from dual; -- next sunday from today
+SELECT GREATEST ('HARRY', 'HARRIOT', 'HAROLD') "Greatest" FROM DUAL;
+select least(12, 495, 2943, 492, 48, 3, 4895, 45) from dual;
+
+select count(first_name), count(commission_pct), avg(salary), min(salary), max(salary), sum(salary) from employees;
+
+-- error: cannot combine single-row expressions with group expressions (multi-row)
+select first_name, avg(salary) from employees;
+
+select round(22/7, 5), ceil(22/7), floor(22/7) from dual;
+-- ceil --> smallest integer greater the given number; for 3.14286 -> 4
+-- floor --> largest integer smaller than the given number; for 3.14286 -> 3
+
+
+select min(first_name), max(first_name) from employees;
+select min(hire_date), max(hire_date) from employees;
+
+select count(*), count(employee_id) from employees;
+select count(job_id), count(distinct job_id) from employees;
+
+
+select first_name, last_name, salary, salary+(salary*nvl(commission_pct, 0.25)) bonus from employees;
+
+select first_name, department_id, salary from employees order by department_id;
+select department_id, min(salary), round(avg(salary)), max(salary), count(*) 
+    from employees 
+    group by department_id 
+    order by department_id;
+
+select job_id, min(salary), round(avg(salary)), max(salary), count(*) 
+    from employees 
+    group by job_id 
+    order by job_id;
+
+select job_id, min(salary), round(avg(salary)), max(salary), count(*) 
+    from employees 
+    group by job_id 
+    having count(*) > 1
+    order by job_id;
+
+select job_id, department_id, round(avg(salary)), count(*) from employees
+    group by department_id, job_id 
+    having count(*)>1;
+
+
+select count(*) from employees;
+select count(*) from departments;
+select count(*) from employees, departments;
+-- cartesian product = no.of rows in employees table X no.of rows in department rows
+select * from employees, departments;
+select * from employees, departments where employees.department_id=departments.department_id;
+select * from employees where department_id is null;
+
+select first_name || ' ' || last_name as employee_name,
+    department_name, 
+    salary 
+from employees, departments 
+where employees.department_id=departments.department_id;
+
+select first_name || ' ' || last_name employee_name,
+    d.department_name, 
+    e.salary 
+from employees e, departments d
+where e.department_id=d.department_id;
+
+select first_name || ' ' || last_name employee_name,
+    d.department_name, 
+    e.salary 
+from employees e
+join departments d
+on e.department_id=d.department_id;
+
+select first_name || ' ' || last_name employee_name,
+    d.department_name, 
+    e.salary 
+from employees e
+join departments d
+on e.department_id=d.department_id -- condition involves columns from two tables
+where salary >= 12000; -- condition is only to filter the rows; nothing to do with join operation
+
+select first_name, last_name, salary,
+    department_name,
+    city, state_province
+from employees e
+join departments d on e.department_id = d.department_id
+join locations l on d.location_id = l.location_id;
+
+select first_name, last_name, salary,
+    department_name,
+    city, state_province,
+    country_name
+from employees e
+join departments d on e.department_id = d.department_id
+join locations l on d.location_id = l.location_id
+join countries c on l.country_id = c.country_id;
+
+select first_name, last_name, salary,
+    department_name,
+    city, state_province,
+    country_name,
+    region_name
+from employees e
+join departments d on e.department_id = d.department_id
+join locations l on d.location_id = l.location_id
+join countries c on l.country_id = c.country_id
+join regions r on c.region_id = r.region_id;
+
+select first_name, last_name,
+    d.department_name, 
+    e.salary 
+from employees e left outer join departments d
+on e.department_id=d.department_id;
+
+select first_name, last_name,
+    d.department_name, 
+    e.salary 
+from employees e right outer join departments d
+on e.department_id=d.department_id;
+
+select first_name, last_name,
+    d.department_name, 
+    e.salary 
+from employees e full outer join departments d
+on e.department_id=d.department_id;
+
+select distinct manager_id from employees;
+select * from employees where employee_id in (100, 123, 120, 121);
+
+
+select e.first_name emp_first_name, e.last_name emp_last_name, e.salary emp_salary,
+    m.first_name mgr_first_name, m.last_name mgr_last_name, m.salary mgr_salary
+from employees e
+join employees m
+on e.manager_id = m.employee_id;
+
+
+-- list all employees who are earning more than that of employee with id 122;
+select * from employees where employee_id=122;
+select * from employees;
+
+select t1.employee_id, t1.first_name, t1.last_name, t1.email, t1.salary
+from employees t1
+join employees t2
+on t1.salary > t2.salary
+where t2.employee_id = 122
+order by t1.salary;
+
+-- get all employees who are working in the same department as 
+-- an employee with email 'AMCEWEN'
+select t2.* from employees t1 
+join employees t2
+on t2.department_id = t1.department_id
+where t1.email='AMCEWEN';
+
+-- get all employees working under the same manager as the employee with id 123
+select t1.* from employees t1
+join employees t2
+on t1.manager_id = t2.manager_id
+where t2.employee_id = 123;
+
+-- get list of employees earning more than the average salary of an employee;
+-- 1 - get the average salary of an employee
+select avg(salary) from employees;
+-- 2 - get all the employees whose salary > (the result of above query)
+select * from employees where salary > 6461.831775700934579439252336448598130841;
+
+-- combine both 1 & 2
+select * from employees where salary > (select avg(salary) from employees);
+
+-- get the list of employees from IT department
+select * from employees where department_id=(select department_id from
+departments where department_name='IT');
+
+-- get the list of employees from IT, Marketing, Shipping
+select * from employees where department_id = any
+(select department_id from departments where department_name in ('IT', 'Marketing', 'Shipping'));
+
+select * from employees where department_id in
+(select department_id from departments where department_name in ('IT', 'Marketing', 'Shipping'));
+
+-- get the list of employees earning maximum salary in their respective departments
+select * from employees t1
+where salary = (select max(salary) from employees where department_id = t1.department_id)
+order by department_id;
+
+-- top N analysis
+-- fetch top 5 salaried employees
+select * from employees
+order by salary desc
+fetch first 5 rows only;
+
+-- FOR OLDER VERSIONS OF ORACLE, USE THE ROWNUM IMPLCIFIT FIELD
+
+-- CHECK THE ROWNUM VALUES
+SELECT ROWNUM, T1.* FROM EMPLOYEES T1 ORDER BY SALARY DESC;
+SELECT ROWNUM, T1.* FROM (SELECT * FROM EMPLOYEES ORDER BY SALARY DESC) T1;
+
+-- THIS WILL NOT WORK, SINCE ROWNUM WAS ADDED ALONG WITH THE DATA
+SELECT * FROM EMPLOYEES WHERE ROWNUM<=5 ORDER BY SALARY DESC;
+
+-- THIS WILL WORK
+SELECT T1.* FROM (SELECT * FROM EMPLOYEES ORDER BY SALARY DESC) T1
+WHERE ROWNUM <= 5;
+
+
+-- FETCH THE TOP 3 SALARIED EMPLOYEES IN EACH DEPARTMENT
+SELECT T1.FIRST_NAME, T1.LAST_NAME, T1.SALARY,
+    T2.DEPARTMENT_NAME,
+    T3.JOB_TITLE
+FROM EMPLOYEES T1
+JOIN DEPARTMENTS T2
+ON T1.DEPARTMENT_ID=T2.DEPARTMENT_ID
+JOIN JOBS T3
+ON T1.JOB_ID=T3.JOB_ID
+WHERE T1.SALARY >= ANY 
+    (SELECT SALARY FROM EMPLOYEES 
+        WHERE DEPARTMENT_ID=T1.DEPARTMENT_ID 
+        ORDER BY SALARY DESC FETCH FIRST 3 ROWS ONLY)
+ORDER BY T2.DEPARTMENT_NAME, T1.SALARY DESC;
+        
+
+
+
+CREATE VIEW EMPLOYEE_SUMMARY AS 
+SELECT T1.FIRST_NAME, T1.LAST_NAME, T1.SALARY,
+    T2.DEPARTMENT_NAME,
+    T3.JOB_TITLE
+FROM EMPLOYEES T1
+JOIN DEPARTMENTS T2
+ON T1.DEPARTMENT_ID=T2.DEPARTMENT_ID
+JOIN JOBS T3
+ON T1.JOB_ID=T3.JOB_ID
+WHERE T1.SALARY >= ANY 
+    (SELECT SALARY FROM EMPLOYEES 
+        WHERE DEPARTMENT_ID=T1.DEPARTMENT_ID 
+        ORDER BY SALARY DESC FETCH FIRST 3 ROWS ONLY)
+ORDER BY T2.DEPARTMENT_NAME, T1.SALARY DESC;
+
+
+SELECT * FROM EMPLOYEE_SUMMARY;
+
+SELECT * FROM EMPLOYEE_SUMMARY 
+    WHERE JOB_TITLE IN ('Programmer', 'Accountant') 
+    OR SALARY >=12000;
+
+
+-- Solution for Query#8
+-- Create a query that displays employee lastnames, department numbers, and all
+-- the employees who work in the same department as a given employee. Give
+-- each column an appropriate label.
+
+select last_name, department_id
+from employees 
+where department_id = (select department_id from employees where employee_id=123);
+
+select t1.last_name, t1.department_id
+from employees t1
+join employees t2
+on t1.department_id = t2.department_id
+where t2.employee_id=123;
+
+
+SELECT LENGTH(LAST_NAME) FROM EMPLOYEES
+FETCH FIRST 10 ROWS ONLY;
+
+CREATE TABLE STUDENTS(
+    ROLLNO NUMBER(10) PRIMARY KEY,
+    NAME VARCHAR2(50) NOT NULL,
+    MOBILE_NUMBER VARCHAR2(12) UNIQUE,
+    EMAIL VARCHAR2(100) UNIQUE NOT NULL,
+    CITY VARCHAR2(50) DEFAULT 'Bangalore'
+);
+
+DESC STUDENTS;
+
+INSERT INTO STUDENTS VALUES 
+(9876, 'Ramesh Kumar', '9876576543', 'ramesh.kumar.6543@xmpl.com', 'Chennai');
+
+INSERT INTO STUDENTS (ROLLNO, NAME, EMAIL) VALUES 
+(7788, 'Rahul Rao', 'rahul.rao.7788@xmpl.com');
+
+select * from students;
+
+-- violations
+INSERT INTO STUDENTS (ROLLNO, NAME) VALUES (1234, 'Rohit');
+INSERT INTO STUDENTS (ROLLNO, NAME, EMAIL) VALUES (1234, 'Rahul', 'rahul.rao.7788@xmpl.com');
+
+DROP TABLE STUDENTS;
+CREATE TABLE STUDENTS(
+    ROLLNO NUMBER(10),
+    NAME VARCHAR2(50) NOT NULL,
+    MOBILE_NUMBER VARCHAR2(12),
+    EMAIL VARCHAR2(100) NOT NULL,
+    CITY VARCHAR2(50) DEFAULT 'Bangalore',
+    CONSTRAINT STUDENTS_PK PRIMARY KEY (ROLLNO),
+    CONSTRAINT STUDENTS_MOBILE_UNIQ UNIQUE (MOBILE_NUMBER),
+    CONSTRAINT STUDENTS_EMAIL_UNIQ UNIQUE (EMAIL)
+);
+
+
+DROP TABLE STUDENTS;
+CREATE TABLE STUDENTS(
+    ROLLNO NUMBER(10),
+    NAME VARCHAR2(50) NOT NULL,
+    MOBILE_NUMBER VARCHAR2(12),
+    EMAIL VARCHAR2(100) NOT NULL,
+    CITY VARCHAR2(50) DEFAULT 'Bangalore',
+    GPA NUMBER(3,2),
+    CONSTRAINT STUDENTS_PK PRIMARY KEY (ROLLNO),
+    CONSTRAINT STUDENTS_MOBILE_UNIQ UNIQUE (MOBILE_NUMBER),
+    CONSTRAINT STUDENTS_EMAIL_UNIQ UNIQUE (EMAIL),
+    CONSTRAINT STUDENTS_GPA_CHK CHECK (GPA BETWEEN 0 AND 5)
+);
+INSERT INTO STUDENTS (ROLLNO, NAME, EMAIL) VALUES (1234, 'Rahul', 'rahul.rao.7788@xmpl.com');
+INSERT INTO STUDENTS (ROLLNO, NAME, EMAIL, GPA) VALUES (2233, 'Rakesh', 'rakesh@xmpl.com', 2.34);
+INSERT INTO STUDENTS (ROLLNO, NAME, EMAIL, GPA) VALUES (5678, 'Uday', 'uday@xmpl.com', 4.34);
+SELECT * FROM STUDENTS;
+
+-- foreign key constraints
+-- involves two tables
+-- one is called "master" or "parent" table (the primary key of this table is referenced in another table)
+-- the other one is called "details" or "child" table
+
+
+-- MASTER TABLE
+CREATE TABLE CUSTOMERS(
+    ID NUMBER PRIMARY KEY,
+    NAME VARCHAR2(50) NOT NULL,
+    CITY VARCHAR2(50) DEFAULT 'Bangalore'
+);
+
+-- DETAILS TABLE
+CREATE TABLE CUSTOMER_ORDERS(
+    ID NUMBER PRIMARY KEY,
+    CUST_ID NUMBER NOT NULL,
+    ORDER_DATE DATE, -- CAN INCLUDE TIME TO_DATE('13-NOV-92 10:56 A.M.','DD-MON-YY HH:MI A.M.')
+    ORDER_AMOUNT NUMBER(10,2) CHECK (ORDER_AMOUNT>0),
+    CONSTRAINT CUSTOMER_ORDERS_FK FOREIGN KEY (CUST_ID) REFERENCES CUSTOMERS(ID)
+);
+
+SELECT * FROM CUSTOMERS;
+SELECT * FROM CUSTOMER_ORDERS;
+
+INSERT INTO CUSTOMERS VALUES (1122, 'JOHN SCOTT', 'DALLAS');
+INSERT INTO CUSTOMERS VALUES (1782, 'RAMESH IYER', 'CHENNAI');
+INSERT INTO CUSTOMER_ORDERS VALUES (10250, 1782, '19-JUL-2022', 2200);
+
+DELETE FROM CUSTOMERS WHERE ID=1782;
+
+DROP TABLE CUSTOMER_ORDERS;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
