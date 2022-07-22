@@ -172,3 +172,16 @@ Once the role is created grant privileges to the role, just the way you do it fo
 
     GRANT ROLE1 TO USER1;
 ```
+
+# Assignments for 22-Jul-2022
+
+1. Explain the following abbreviations:
+    - DDL, DML, TCL, DCL, DRL/DQL
+2. Explain the roles and responsibilities of a DBA
+3. Explain the Oracle commands involved in User Management
+4. Explain the following concepts:
+    - Tablespace
+    - Redo file management
+    - Control files
+
+Please write your answers in a plain paper, take pictures of the same using your smartphone, convert them into a PDF document (using Adobe Scan mobile app) and upload the same into the shared drive. There is a folder for submission of assignments **(OracleDBA -> Assignment_Submissions)**. Name your file in the format EMPNO_FIRSTNAME_LASTNAME.pdf (eg. 9876_VINOD_KUMAR.pdf).
