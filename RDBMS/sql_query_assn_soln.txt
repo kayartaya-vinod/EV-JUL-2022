@@ -1,0 +1,63 @@
+--42. Write a query to get the monthly salary (round 2 decimal places) of each and every employee
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, ROUND(SALARY/12, 2) MONTHLY_SALARY FROM EMPLOYEES
+ORDER BY MONTHLY_SALARY;
+
+--82. Write a query to fetch even numbered records from the employees table
+SELECT * FROM (SELECT ROWNUM R, E.* FROM EMPLOYEES E) WHERE MOD(R,2)=0;
+
+--96. Write a query to find the employee ID, job title, number of days between ending
+--    date and starting date for all jobs in department 90
+
+SELECT E.EMPLOYEE_ID, E.FIRST_NAME, E.LAST_NAME,
+    J.JOB_TITLE,
+    JH.START_DATE, JH.END_DATE,
+    JH.END_DATE - JH.START_DATE NO_OF_DAYS
+    FROM EMPLOYEES E
+    JOIN JOBS J ON E.JOB_ID=J.JOB_ID
+    JOIN JOB_HISTORY JH ON E.EMPLOYEE_ID=JH.EMPLOYEE_ID
+    WHERE JH.DEPARTMENT_ID=90;
+    
+    
+-- 108. Write a query to get employee ID, last name, and date of first salary of the employees.
+SELECT EMPLOYEE_ID, LAST_NAME, LAST_DAY(HIRE_DATE)+1 DATE_OF_FIRST_SALARY
+    FROM EMPLOYEES;
+    
+--109. Write a query to get first name, hire date and experience of the employees
+SELECT FIRST_NAME, LAST_NAME, HIRE_DATE, ROUND((SYSDATE-HIRE_DATE)/365, 1) EXPERIENCE
+    FROM EMPLOYEES;
+    
+--111. Write a query to get the job_id and related employee's id 
+SELECT JOB_ID, LISTAGG(EMPLOYEE_ID, ', ') WITHIN GROUP (ORDER BY EMPLOYEE_ID) "Emp#"
+    FROM EMPLOYEES
+    GROUP BY JOB_ID;
+
+--114. Write a query to display leading zeros before maximum and minimum salary.
+
+SELECT LPAD(TO_CHAR(MIN(SALARY)), 6, '0') MIN_SALARY, 
+    LPAD(TO_CHAR(MAX(SALARY)), 6, '0') MAX_SALARY
+    FROM EMPLOYEES;
+
+--120. Write a query to get the last word of the street address.
+-- FIND THE INDEX OF THE LAST SPACE CHARACTER --> INSTR(STREET_ADDRESS, ' ', -1)
+-- FIND THE SUBSTRING FROM THE NEXT CHARACTER TILL THE END
+SELECT STREET_ADDRESS, SUBSTR(STREET_ADDRESS, INSTR(STREET_ADDRESS, ' ', -1)+1)
+    FROM LOCATIONS;
+
+--125. Write a query to display the first name and salary for all employees. Format
+-- the salary to be 10 characters long, left-padded with the $ symbol. Label the column SALARY
+SELECT FIRST_NAME, '$' || LPAD(SALARY, 10) SALARY
+    FROM EMPLOYEES;
+
+--126. Write a query to display the first eight characters of the employees' first
+-- names and indicate the amounts of their salaries with '$' sign. Each '$' sign
+-- signifies a thousand dollars. Sort the data in descending order of salary.
+
+SELECT RPAD(SUBSTR(FIRST_NAME, 0, 8), 8, ' ') || RPAD(' ', ROUND(SALARY/1000), '$') EXPR
+    FROM EMPLOYEES;
+    
+    
+    
+    
+    
+    
+    
